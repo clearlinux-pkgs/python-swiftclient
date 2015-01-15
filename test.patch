@@ -1,0 +1,18 @@
+--- python-swiftclient-2.4.0/test-requirements.txt~	2015-03-24 18:35:52.000000000 -0400
++++ python-swiftclient-2.4.0/test-requirements.txt	2015-06-03 19:13:27.169388315 -0400
+@@ -1,4 +1,4 @@
+-hacking>=0.8.0,<0.9
++hacking
+ 
+ coverage>=3.6
+ discover
+--- python-swiftclient-2.4.0/test-requirements.txt~	2015-06-03 19:13:27.000000000 -0400
++++ python-swiftclient-2.4.0/test-requirements.txt	2015-06-03 19:20:28.960115205 -0400
+@@ -5,6 +5,6 @@
+ mock>=1.0
+ oslosphinx
+ python-keystoneclient>=0.7.0
+-sphinx>=1.1.2,<1.2
++sphinx
+ testrepository>=0.0.18
+ testtools>=0.9.34
