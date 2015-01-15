@@ -1,0 +1,4 @@
+# openstack (Kilo stable) needs version <2.5
+# once they update requirement, we can push >=2.5 versions
+# check: https://github.com/openstack/requirements/blob/stable/kilo/global-requirements.txt
+watchurl=http://tarballs.openstack.org/python-swiftclient/python-swiftclient-(2\.4\..*).tar.gz
