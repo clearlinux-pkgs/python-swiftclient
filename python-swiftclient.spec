@@ -4,7 +4,7 @@
 #
 Name     : python-swiftclient
 Version  : 3.0.0
-Release  : 18
+Release  : 19
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.0.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.0.0.tar.gz
 Summary  : OpenStack Object Storage API Client Library
@@ -13,7 +13,9 @@ License  : Apache-2.0
 Requires: python-swiftclient-bin
 Requires: python-swiftclient-python
 Requires: python-swiftclient-doc
+BuildRequires : Jinja2
 BuildRequires : Sphinx-python
+BuildRequires : docutils
 BuildRequires : futures-python
 BuildRequires : pbr
 BuildRequires : pip
