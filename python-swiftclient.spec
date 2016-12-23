@@ -4,7 +4,7 @@
 #
 Name     : python-swiftclient
 Version  : 3.1.0
-Release  : 24
+Release  : 25
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.1.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.1.0.tar.gz
 Summary  : OpenStack Object Storage API Client Library
