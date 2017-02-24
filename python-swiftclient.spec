@@ -6,7 +6,7 @@
 #
 Name     : python-swiftclient
 Version  : 3.1.0
-Release  : 26
+Release  : 27
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.1.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.1.0.tar.gz
 Source99 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.1.0.tar.gz.asc
@@ -16,9 +16,11 @@ License  : Apache-2.0
 Requires: python-swiftclient-bin
 Requires: python-swiftclient-python
 Requires: python-swiftclient-doc
+Requires: futures
+Requires: python-keystoneclient
+Requires: requests
+Requires: six
 BuildRequires : docutils
-BuildRequires : extras
-BuildRequires : extras-python
 BuildRequires : futures-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -26,14 +28,11 @@ BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-dev
+BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : requests-python
 BuildRequires : setuptools
-BuildRequires : six
-BuildRequires : six-python
 BuildRequires : testrepository-python
-BuildRequires : testtools
-BuildRequires : testtools-python
 BuildRequires : tox
 BuildRequires : virtualenv
 
@@ -60,9 +59,6 @@ doc components for the python-swiftclient package.
 %package python
 Summary: python components for the python-swiftclient package.
 Group: Default
-Requires: futures-python
-Requires: requests-python
-Requires: six-python
 
 %description python
 python components for the python-swiftclient package.
@@ -73,7 +69,7 @@ python components for the python-swiftclient package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484569680
+export SOURCE_DATE_EPOCH=1487899547
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -83,7 +79,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1484569680
+export SOURCE_DATE_EPOCH=1487899547
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
