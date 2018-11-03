@@ -6,40 +6,28 @@
 #
 Name     : python-swiftclient
 Version  : 3.6.0
-Release  : 31
+Release  : 32
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.6.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.6.0.tar.gz
 Source99 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.6.0.tar.gz.asc
 Summary  : OpenStack Object Storage API Client Library
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: python-swiftclient-bin
-Requires: python-swiftclient-python3
-Requires: python-swiftclient-license
-Requires: python-swiftclient-man
-Requires: python-swiftclient-python
-Requires: Sphinx
-Requires: coverage
+Requires: python-swiftclient-bin = %{version}-%{release}
+Requires: python-swiftclient-license = %{version}-%{release}
+Requires: python-swiftclient-man = %{version}-%{release}
+Requires: python-swiftclient-python = %{version}-%{release}
+Requires: python-swiftclient-python3 = %{version}-%{release}
 Requires: futures
-Requires: hacking
-Requires: keystoneauth1
-Requires: openstackdocstheme
-Requires: oslosphinx
 Requires: python-keystoneclient
-Requires: python-mock
-Requires: reno
 Requires: requests
 Requires: six
-Requires: testrepository
 BuildRequires : buildreq-distutils3
 BuildRequires : docutils
 BuildRequires : pbr
-BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-BuildRequires : python3-dev
-BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
 
@@ -50,8 +38,8 @@ Team and repository tags
 %package bin
 Summary: bin components for the python-swiftclient package.
 Group: Binaries
-Requires: python-swiftclient-license
-Requires: python-swiftclient-man
+Requires: python-swiftclient-license = %{version}-%{release}
+Requires: python-swiftclient-man = %{version}-%{release}
 
 %description bin
 bin components for the python-swiftclient package.
@@ -76,7 +64,7 @@ man components for the python-swiftclient package.
 %package python
 Summary: python components for the python-swiftclient package.
 Group: Default
-Requires: python-swiftclient-python3
+Requires: python-swiftclient-python3 = %{version}-%{release}
 
 %description python
 python components for the python-swiftclient package.
@@ -99,8 +87,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532574323
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1541273104
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
@@ -109,9 +97,9 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/python-swiftclient
-cp LICENSE %{buildroot}/usr/share/doc/python-swiftclient/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/python-swiftclient
+cp LICENSE %{buildroot}/usr/share/package-licenses/python-swiftclient/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -124,11 +112,11 @@ echo ----[ mark ]----
 /usr/bin/swift
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/python-swiftclient/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/python-swiftclient/LICENSE
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/swift.1
 
 %files python
