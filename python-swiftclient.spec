@@ -6,11 +6,11 @@
 #
 Name     : python-swiftclient
 Version  : 3.7.0
-Release  : 34
+Release  : 35
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.7.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.7.0.tar.gz
 Source99 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.7.0.tar.gz.asc
-Summary  : An SDK for building applications to work with OpenStack
+Summary  : OpenStack Object Storage API Client Library
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: python-swiftclient-bin = %{version}-%{release}
@@ -18,7 +18,6 @@ Requires: python-swiftclient-license = %{version}-%{release}
 Requires: python-swiftclient-man = %{version}-%{release}
 Requires: python-swiftclient-python = %{version}-%{release}
 Requires: python-swiftclient-python3 = %{version}-%{release}
-Requires: futures
 Requires: python-keystoneclient
 Requires: requests
 Requires: six
@@ -39,22 +38,21 @@ BuildRequires : pluggy
 BuildRequires : prettytable
 BuildRequires : py-python
 BuildRequires : pytest
+BuildRequires : python-keystoneclient
 BuildRequires : python-mock
 BuildRequires : python-mock-python
 BuildRequires : reno-python
 BuildRequires : requests
 BuildRequires : requests-python
+BuildRequires : six
 BuildRequires : stestr
 BuildRequires : stestr-python
 BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-========================
 Team and repository tags
-========================
-.. image:: https://governance.openstack.org/tc/badges/python-swiftclient.svg
-:target: https://governance.openstack.org/tc/reference/tags/index.html
+        ========================
 
 %package bin
 Summary: bin components for the python-swiftclient package.
@@ -107,8 +105,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552074314
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1559110232
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
