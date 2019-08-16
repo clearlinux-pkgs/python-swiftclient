@@ -1,2 +1,7 @@
 # This file contains recursive sources that require this package
+cinder
+glance_store
 horizon
+ironic
+python-troveclient
+sahara
