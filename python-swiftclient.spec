@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xFC43F0EE211DFED8 (infra-root@openstack.org)
 #
 Name     : python-swiftclient
-Version  : 3.8.0
-Release  : 37
-URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.0.tar.gz
-Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.0.tar.gz
-Source1 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.0.tar.gz.asc
+Version  : 3.8.1
+Release  : 38
+URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz
+Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz
+Source1 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz.asc
 Summary  : An SDK for building applications to work with OpenStack
 Group    : Development/Tools
 License  : Apache-2.0
@@ -89,14 +89,14 @@ python3 components for the python-swiftclient package.
 
 
 %prep
-%setup -q -n python-swiftclient-3.8.0
+%setup -q -n python-swiftclient-3.8.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565964233
+export SOURCE_DATE_EPOCH=1568908088
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
