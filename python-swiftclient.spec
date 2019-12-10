@@ -6,11 +6,11 @@
 #
 Name     : python-swiftclient
 Version  : 3.8.1
-Release  : 39
+Release  : 40
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz
-Source1 : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz.asc
-Summary  : An SDK for building applications to work with OpenStack
+Source1  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.8.1.tar.gz.asc
+Summary  : OpenStack Object Storage API Client Library
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: python-swiftclient-bin = %{version}-%{release}
@@ -21,17 +21,29 @@ Requires: python-swiftclient-python3 = %{version}-%{release}
 Requires: python-keystoneclient
 Requires: requests
 Requires: six
+BuildRequires : Sphinx
+BuildRequires : Sphinx-python
 BuildRequires : buildreq-distutils3
 BuildRequires : coverage-python
 BuildRequires : docutils
+BuildRequires : dulwich-python
 BuildRequires : hacking
+BuildRequires : keystoneauth1
+BuildRequires : keystoneauth1-python
+BuildRequires : openstackdocstheme-python
+BuildRequires : oslosphinx
+BuildRequires : oslosphinx-python
 BuildRequires : pbr
 BuildRequires : pluggy
 BuildRequires : prettytable
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-keystoneclient
+BuildRequires : python-mock
+BuildRequires : python-mock-python
+BuildRequires : reno-python
 BuildRequires : requests
+BuildRequires : requests-python
 BuildRequires : six
 BuildRequires : stestr
 BuildRequires : stestr-python
@@ -39,11 +51,8 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-========================
 Team and repository tags
-========================
-.. image:: https://governance.openstack.org/tc/badges/python-swiftclient.svg
-:target: https://governance.openstack.org/tc/reference/tags/index.html
+        ========================
 
 %package bin
 Summary: bin components for the python-swiftclient package.
@@ -90,14 +99,14 @@ python3 components for the python-swiftclient package.
 
 %prep
 %setup -q -n python-swiftclient-3.8.1
+cd %{_builddir}/python-swiftclient-3.8.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568908088
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576014541
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -110,12 +119,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-swiftclient
-cp LICENSE %{buildroot}/usr/share/package-licenses/python-swiftclient/LICENSE
+cp %{_builddir}/python-swiftclient-3.8.1/LICENSE %{buildroot}/usr/share/package-licenses/python-swiftclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -130,7 +139,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/python-swiftclient/LICENSE
+/usr/share/package-licenses/python-swiftclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
 
 %files man
 %defattr(0644,root,root,0755)
