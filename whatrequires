@@ -1,7 +1,9 @@
 # This file contains recursive sources that require this package
 cinder
 glance_store
+heat
 horizon
 ironic
+python-heatclient
 python-troveclient
 sahara
