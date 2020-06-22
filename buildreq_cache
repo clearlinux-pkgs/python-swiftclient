@@ -1,13 +1,6 @@
-3.9.0
+3.10.0
 coverage-python
-dogpile.cache-python
 hacking
-jmespath-python
-jsonpatch
-jsonpatch-python
-munch-python
 openstacksdk-python
-prettytable
-requestsexceptions-python
 stestr
 stestr-python
