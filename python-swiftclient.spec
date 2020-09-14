@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC12B8E73B30F2FC8 (infra-root@openstack.org)
 #
 Name     : python-swiftclient
-Version  : 3.10.0
-Release  : 45
-URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.0.tar.gz
-Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.0.tar.gz
-Source1  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.0.tar.gz.asc
+Version  : 3.10.1
+Release  : 46
+URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz
+Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz
+Source1  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz.asc
 Summary  : OpenStack Object Storage API Client Library
 Group    : Development/Tools
 License  : Apache-2.0
@@ -89,15 +89,15 @@ python3 components for the python-swiftclient package.
 
 
 %prep
-%setup -q -n python-swiftclient-3.10.0
-cd %{_builddir}/python-swiftclient-3.10.0
+%setup -q -n python-swiftclient-3.10.1
+cd %{_builddir}/python-swiftclient-3.10.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592867623
+export SOURCE_DATE_EPOCH=1600111688
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -115,7 +115,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-swiftclient
-cp %{_builddir}/python-swiftclient-3.10.0/LICENSE %{buildroot}/usr/share/package-licenses/python-swiftclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
+cp %{_builddir}/python-swiftclient-3.10.1/LICENSE %{buildroot}/usr/share/package-licenses/python-swiftclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
