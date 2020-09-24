@@ -6,7 +6,7 @@
 #
 Name     : python-swiftclient
 Version  : 3.10.1
-Release  : 46
+Release  : 47
 URL      : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz
 Source0  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz
 Source1  : http://tarballs.openstack.org/python-swiftclient/python-swiftclient-3.10.1.tar.gz.asc
